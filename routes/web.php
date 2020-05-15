@@ -16,3 +16,33 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('addSession',function(){
+    session()->put('add','session added');
+    return redirect(route('keep'));
+})->name('add');
+
+Route::get('keepSession',function(){
+    return session()->get('add');
+})->name('keep');
+
+
+Route::get('use',function(){
+    return session()->get('add');
+})->name('use');
+
+
+Route::get('remove',function(){
+    return session()->flush();
+
+
+})->name('remove');
+
+
+Route::get('finish',function(){
+    return session()->get('add');
+})->name('finish');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
