@@ -45,6 +45,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('all') }}">{{ __('all') }}</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('keep') }}">{{ __('keep') }}</a>
                         </li>
 
@@ -58,9 +62,8 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('remove') }}">{{ __('remove') }}</a>
+                            <a class="nav-link" href="{{ route('removeAll') }}">{{ __('removeAll') }}</a>
                         </li>
-
 
 
                         <li class="nav-item">

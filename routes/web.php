@@ -20,29 +20,49 @@ Route::get('/', function () {
 
 Route::get('addSession',function(){
     session()->put('add','session added');
-    return redirect(route('keep'));
+    redirect(route('keep'));
+    return redirect(route('home'));
+
 })->name('add');
 
 Route::get('keepSession',function(){
-    return session()->get('add');
+    session()->get('add');
+    return redirect(route('home'));
+
 })->name('keep');
 
 
 Route::get('use',function(){
-    return session()->get('add');
+    session()->get('add');
+    return redirect(route('home'));
 })->name('use');
 
 
 Route::get('remove',function(){
-    return session()->flush();
+    session()->forget('add');
+    return redirect(route('home'));
 
 
 })->name('remove');
 
+Route::get('removeAll',function(){
+    session()->flush();
+    return redirect(route('home'));
+
+
+})->name('removeAll');
 
 Route::get('finish',function(){
-    return session()->get('add');
+    session()->get('add');
+    return redirect(route('home'));
+
 })->name('finish');
+
+Route::get('all',function(){
+    return $allSession =session()->all();
+    return view('home',compact('allSession'));
+
+})->name('all');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
