@@ -63,6 +63,19 @@ Route::get('all',function(){
     return view('home',compact('allSession'));
 
 })->name('all');
+
+
+//return or show php info
+Route::get('showInfo',function(){
+    return phpinfo();
+});
+
+
+
+
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
