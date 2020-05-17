@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function exit(){
-        return 'dashboard/exit';
-    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -19,6 +17,11 @@ class DashboardController extends Controller
         return view('index');
     }
 
+
+    public function exit(){
+        session()->flush();
+        return redirect(route('login'));
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -18,7 +18,7 @@
         </div>
         <div class="info row">
           <a href="#" class="col-7">Alexander Pierce</a>
-          <a href="{{route('dashboard.index')}}" class="col-5">
+          <a href="{{route('dashboard.exit')}}" class="col-5">
             <img src="{{asset('application_images/exit.png')}}" title="exit" alt="logout icon" class="brand-image img-circle elevation-3"
                 style="opacity: .8" >
           </a>
