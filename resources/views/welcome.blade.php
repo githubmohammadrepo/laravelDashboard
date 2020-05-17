@@ -70,9 +70,6 @@
         <x-package-alert type="danger"  title="sorry!," message="hi some message"/>
         <x-package-alert type="success"  title="success!," message="your post was successfully created."/>
 
-        <hr>
-        <x-select></x-select>
-
 
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))

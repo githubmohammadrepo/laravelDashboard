@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use App\View\Components\Alert;
-use App\View\Components\Select;
-use App\View\Components\AlertSuccess;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use App\Container\TestServiceContainer;
@@ -35,7 +33,6 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         // reister slots 
-        Blade::component('success', Select::class);
 
         Blade::component('package-alert', Alert::class);
 

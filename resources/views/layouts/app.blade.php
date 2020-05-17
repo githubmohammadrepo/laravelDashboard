@@ -38,38 +38,6 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-                        {{-- extra link below --}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('add') }}">{{ __('add') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('all') }}">{{ __('all') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('keep') }}">{{ __('keep') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('use') }}">{{ __('use') }}</a>
-                        </li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('remove') }}">{{ __('remove') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('removeAll') }}">{{ __('removeAll') }}</a>
-                        </li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('finish') }}">{{ __('finish') }}</a>
-                        </li>
-
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -99,8 +67,6 @@
                                 </div>
                             </li>
                         @endguest
-
-
                     </ul>
                 </div>
             </div>
