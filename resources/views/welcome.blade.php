@@ -9,6 +9,9 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        {{-- add assets --}}
+        <link href="{{asset('css/app.css')}}" rel="stylesheet">
+
         <!-- Styles -->
         <style>
             html, body {
@@ -64,6 +67,13 @@
         </style>
     </head>
     <body>
+        <x-package-alert type="danger"  title="sorry!," message="hi some message"/>
+        <x-package-alert type="success"  title="success!," message="your post was successfully created."/>
+
+        <hr>
+        <x-select></x-select>
+
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -96,5 +106,8 @@
                 </div>
             </div>
         </div>
+
+        {{-- add asset --}}
+        <script src="{{asset('js/app.js')}}"></script>
     </body>
 </html>

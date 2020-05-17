@@ -84,7 +84,9 @@ Route::get('container','serviceContainer@index');
 
 
 
-
+Route::get('/',function(){
+    return view('welcome');
+});
 
 Route::get('addSession', function () {
     session()->put('add', 'session added');
