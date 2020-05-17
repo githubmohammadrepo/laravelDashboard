@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +17,79 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+
+
+
+
+
+
+
+
+
+
+
+
+//original class step-1
+class fish {
+    public function swin($time){
+        if(gettype($time[0])=='integer'){
+
+            echo 'swiming  time: '.$time[0];
+        }else{
+            echo 'please, insert integer parameter';
+        }
+    }
+
+    public function eat(){
+        echo 'eating';
+    }
+}
+
+//binding fish class step-2
+app()->bind('fish',function(){
+    return new fish();
+});
+
+//parent facade step-3
+class facade {
+    public static function __callStatic($name, $arguments)
+    {
+        app()->make('fish')->$name($arguments);
+    }
+
+    protected static function getAccessor(){
+
+    }
+}
+
+
+//create fish facade stemp-4
+class fishFacade extends facade {
+
+    protected static function getAccessor(){
+        return 'fish';
+    }
+}
+
+    dd( fishFacade::swin('12'));
+    dd( fishFacade::swin(12));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
 
