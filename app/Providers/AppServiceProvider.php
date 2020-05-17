@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(TestServiceContainer::class,function($app){
+        $this->app->singleton(TestServiceContainer::class,function($app){
             return new TestServiceContainer('ure');
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Container\TestServiceContainer;
+use App\Order\OrderContainer;
 
 class serviceContainer extends Controller
 {
@@ -12,10 +13,11 @@ class serviceContainer extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(TestServiceContainer $container)
+    public function index(TestServiceContainer $container,OrderContainer $order)
     {
     //way one
-        return $container->charge(12);
+        dump($order->all());
+        dd($container->charge(12000));
 
 
     //way two
