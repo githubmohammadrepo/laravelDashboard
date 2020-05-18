@@ -7,6 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Role::class, function (Faker $faker) {
     return [
-        //
+        'name' => ($faker->randomDigitNotNull) %2 ==0 ? 'admin' : 'user' ,
     ];
 });
+

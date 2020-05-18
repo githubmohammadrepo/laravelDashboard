@@ -70,11 +70,11 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        //by default set user role to client 
+        //by default set user role to client
         //or if does not posted role id set default
 
         //get id for user role
-        $userRole = \App\Role::where('name','user')->get();
+       $userRole = \App\Role::where('name','user')->first();
         $user->roles()->attach([$userRole->id]);
 
         return $user;

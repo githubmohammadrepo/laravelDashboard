@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class UserController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -14,14 +14,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
-        return view('index');
+        $users = User::paginate(9);
+        return view('users',compact('users'));
     }
 
 
-    public function exit(){
-        session()->flush();
-        return redirect(route('login'));
+    //reterun users roles name
+    public static function roleNmaes($user){
+        return $user->roles()->pluck('name');
     }
     /**
      * Show the form for creating a new resource.
@@ -30,7 +30,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        return 'hi';    
+        //
     }
 
     /**

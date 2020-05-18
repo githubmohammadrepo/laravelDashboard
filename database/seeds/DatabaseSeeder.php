@@ -15,5 +15,10 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             RoleSeeder::class,
         ]);
+
+
+        factory(\App\User::class, 50)->create()->each(function ($user) {
+            $user->roles()->save(factory(\App\Role::class)->make());
+        });
     }
 }

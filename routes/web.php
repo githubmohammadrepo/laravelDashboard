@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
         return view('welcome');
     });
 
+    Route::resource('users', 'UserController');
 
     Route::resource('dashboard', 'DashboardController');
     Route::get('dashboardExit','DashboardController@exit')->name('dashboard.exit');

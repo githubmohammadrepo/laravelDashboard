@@ -6,7 +6,7 @@
            style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
-  
+
 
 
     <!-- Sidebar -->
@@ -14,7 +14,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-between">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{{asset('uploaded/'.(Auth::user()->image !=null ? Auth::user()->image : 'default-avatar.png'))}}" class="img-circle elevation-2" alt="User Image">
           <a href="{{route('profile.index')}}" title="profile" class="col-7">{{Auth::user()->name}}</a>
         </div>
         <div class="info row">
