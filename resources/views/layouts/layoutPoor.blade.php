@@ -16,14 +16,17 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-</head
-<body >
-    <div class="container=fluid" id="container">
+</head>
+<body id="container">
+    <div class="container=fluid" >
         <main class="py-4">
+    @if (session()->has('authError'))
+        <x-package-alert title="sorry" type="danger" message="{{session()->get('authError')}}"></x-package-alert>
+    @endif
             @yield('content')
         </main>
     </div>

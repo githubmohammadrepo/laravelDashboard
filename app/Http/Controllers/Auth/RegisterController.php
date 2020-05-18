@@ -72,7 +72,10 @@ class RegisterController extends Controller
 
         //by default set user role to client 
         //or if does not posted role id set default
-        $user->roles()->attach([2]);
+
+        //get id for user role
+        $userRole = \App\Role::where('name','user')->get();
+        $user->roles()->attach([$userRole->id]);
 
         return $user;
     }

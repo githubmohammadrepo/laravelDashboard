@@ -49,6 +49,13 @@
     @include('partials.navbar')
     @include('partials.mainSidebar')
 
+    @if (session()->has('error'))
+        <x-package-alert title="sorry" type="danger" message="{{session()->get('error')}}"></x-package-alert>
+    @endif
+
+    @if (session()->has('success'))
+        <x-package-alert title="success!" type="success" message="{{session()->get('success')}}"></x-package-alert>
+    @endif
 
     @yield('content')
 
@@ -94,7 +101,7 @@
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+{{-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> --}}
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
 </body>

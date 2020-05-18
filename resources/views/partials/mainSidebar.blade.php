@@ -12,12 +12,12 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-between">
         <div class="image">
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <a href="{{route('profile.index')}}" title="profile" class="col-7">{{Auth::user()->name}}</a>
         </div>
         <div class="info row">
-          <a href="#" class="col-7">Alexander Pierce</a>
           <a href="{{route('dashboard.exit')}}" class="col-5">
             <img src="{{asset('application_images/exit.png')}}" title="exit" alt="logout icon" class="brand-image img-circle elevation-3"
                 style="opacity: .8" >

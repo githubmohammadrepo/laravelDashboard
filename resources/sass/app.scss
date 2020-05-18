@@ -9,7 +9,7 @@
 
 
 // some style for layoutPoor file
-body{
+body#container{
 background: #1A2980;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to bottom, #26D0CE, #1A2980);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to bottom, #26D0CE, #1A2980); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -17,5 +17,18 @@ background: linear-gradient(to bottom, #26D0CE, #1A2980); /* W3C, IE 10+/ Edge, 
 height:100vh;
 }
 
+
+// transition fade if for vuejs
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+// display none unil page is laoding in vuejs
+[v-cloak] {
+  display: none;
+}
 
 
