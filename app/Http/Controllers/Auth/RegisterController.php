@@ -64,10 +64,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        //by default set user role to client 
+        //or if does not posted role id set default
+        $user->roles()->attach([2]);
+
+        return $user;
     }
 }
