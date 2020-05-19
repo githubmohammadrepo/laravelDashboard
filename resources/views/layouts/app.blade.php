@@ -50,12 +50,16 @@
     @include('partials.mainSidebar')
 
     @if (session()->has('error'))
-        <x-package-alert title="sorry" type="danger" message="{{session()->get('error')}}"></x-package-alert>
+        <x-package-modal type="danger" title="Sorry !!" content="{{session()->get('error')}}"/>
     @endif
 
     @if (session()->has('success'))
-        <x-package-alert title="success!" type="success" message="{{session()->get('success')}}"></x-package-alert>
+        <x-package-modal type="primary" title="Successfull !!" content="{{session()->get('success')}}"/>
+
     @endif
+
+
+
 
     @yield('content')
 
@@ -104,5 +108,11 @@
 {{-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> --}}
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
+
+
+{{-- show automatically modal status --}}
+<script>
+    $('#modalStatus').modal('show')
+</script>
 </body>
 </html>

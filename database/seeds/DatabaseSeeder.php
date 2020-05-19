@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        factory(\App\User::class, 50)->create()->each(function ($user) {
-            $user->roles()->save(factory(\App\Role::class)->make());
-        });
+        // factory(\App\User::class, 50)->create()->each(function ($user) {
+        //     $user->roles()->attach(random_int(1,2));
+        // });
     }
 }

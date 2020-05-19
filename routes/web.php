@@ -25,12 +25,12 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::resource('users', 'UserController');
+Route::resource('category', 'CategoryController');
 
     Route::resource('dashboard', 'DashboardController');
     Route::get('dashboardExit','DashboardController@exit')->name('dashboard.exit');
     Route::resource('profile','ProfileController');
 });
-
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\View\Components\Alert;
+use App\View\Components\Modal;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use App\Container\TestServiceContainer;
@@ -32,9 +33,9 @@ class AppServiceProvider extends ServiceProvider
         //added for fix problem in original framework
         Schema::defaultStringLength(191);
 
-        // reister slots 
+        // reister slots
 
         Blade::component('package-alert', Alert::class);
-
+        Blade::component('package-modal', Modal::class);
     }
 }

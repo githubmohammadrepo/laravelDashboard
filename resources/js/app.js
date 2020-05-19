@@ -30,11 +30,49 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
    data:{
-       visibleUpdateUser:false
+       visibleUpdateUser:false,
+       showCategory:true,
+       categoryText:'new',
    },
    methods: {
        toggleUpdateFormUser(){
            this.visibleUpdateUser= !this.visibleUpdateUser;
+       },
+       showSubmitCategory(){
+            this.showCategory=!this.showCategory;
+            this.categoryText = this.showCategory==true ? 'new' : 'close';
+       },
+       showUpdateCategory(e){
+            let status = 0;
+            e.target.offsetParent.children[2].classList.forEach(element => {
+                if(element =='d-none'){
+                    status = 1;
+                    e.target.offsetParent.children[2].classList.remove('d-none');
+                }
+            });
+            //dipslay noone all
+            let forms = document.querySelectorAll('.updateCategory');
+            forms.forEach(element => {
+                element.classList.add('d-none');
+            });
+
+
+            if(status==0){
+                //remove all d-none from lis
+                e.target.offsetParent.children[2].classList.add('d-none');
+                if(window.innerWidth<600){
+                    e.target.offsetParent.children[1].classList.remove('d-none');
+                }
+
+            }else{
+                e.target.offsetParent.children[2].classList.remove('d-none');
+
+                if(window.innerWidth<600){
+                    e.target.offsetParent.children[1].classList.add('d-none');
+                }
+
+            }
+            // console.log(e.target.offsetParent.children[2].classList.remove('d-none'));
        }
    },
 })

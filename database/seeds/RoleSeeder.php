@@ -15,14 +15,14 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             'name' => 'user'
         ]);
-        
+
         //add user ADMIN
         DB::table('roles')->insert([
             'name' => 'admin'
         ]);
 
         //create relationship
-        $user =\App\    User::find(1);
+        $user =\App\User::find(1);
         $user->roles()->attach([1,2]);
     }
 }
