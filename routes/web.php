@@ -20,16 +20,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('/',function(){
+    Route::get('/', function () {
         return view('welcome');
     });
 
     Route::resource('users', 'UserController');
-Route::resource('category', 'CategoryController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('tag', 'TagController');
+    Route::resource('book', 'BookController');
 
     Route::resource('dashboard', 'DashboardController');
-    Route::get('dashboardExit','DashboardController@exit')->name('dashboard.exit');
-    Route::resource('profile','ProfileController');
+    Route::get('dashboardExit', 'DashboardController@exit')->name('dashboard.exit');
+    Route::resource('profile', 'ProfileController');
 });
 
 

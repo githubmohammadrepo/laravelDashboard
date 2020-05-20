@@ -49706,7 +49706,9 @@ var app = new Vue({
   data: {
     visibleUpdateUser: false,
     showCategory: true,
-    categoryText: 'new'
+    categoryText: 'new',
+    showTag: true,
+    tagText: 'new'
   },
   methods: {
     toggleUpdateFormUser: function toggleUpdateFormUser() {
@@ -49715,6 +49717,10 @@ var app = new Vue({
     showSubmitCategory: function showSubmitCategory() {
       this.showCategory = !this.showCategory;
       this.categoryText = this.showCategory == true ? 'new' : 'close';
+    },
+    showSubmitTag: function showSubmitTag() {
+      this.showTag = !this.showTag;
+      this.tagText = this.showTag == true ? 'new' : 'close';
     },
     showUpdateCategory: function showUpdateCategory(e) {
       var status = 0;
@@ -49726,6 +49732,36 @@ var app = new Vue({
       }); //dipslay noone all
 
       var forms = document.querySelectorAll('.updateCategory');
+      forms.forEach(function (element) {
+        element.classList.add('d-none');
+      });
+
+      if (status == 0) {
+        //remove all d-none from lis
+        e.target.offsetParent.children[2].classList.add('d-none');
+
+        if (window.innerWidth < 600) {
+          e.target.offsetParent.children[1].classList.remove('d-none');
+        }
+      } else {
+        e.target.offsetParent.children[2].classList.remove('d-none');
+
+        if (window.innerWidth < 600) {
+          e.target.offsetParent.children[1].classList.add('d-none');
+        }
+      } // console.log(e.target.offsetParent.children[2].classList.remove('d-none'));
+
+    },
+    showUpdateTag: function showUpdateTag(e) {
+      var status = 0;
+      e.target.offsetParent.children[2].classList.forEach(function (element) {
+        if (element == 'd-none') {
+          status = 1;
+          e.target.offsetParent.children[2].classList.remove('d-none');
+        }
+      }); //dipslay noone all
+
+      var forms = document.querySelectorAll('.updateTag');
       forms.forEach(function (element) {
         element.classList.add('d-none');
       });

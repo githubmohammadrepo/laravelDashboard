@@ -44,6 +44,13 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('tag.index')}}" class="nav-link bg-purple">
+                <i class="nav-icon fas fa-list-alt"></i>
+                <p>Tag</p>
+            </a>
+
+          </li>
 
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">

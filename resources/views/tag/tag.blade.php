@@ -8,11 +8,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Categories</h1>
+            <h1 class="m-0 text-dark">Tags</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('category.index')}}">Categories</a></li>
+              <li class="breadcrumb-item"><a href="{{route('tag.index')}}">Tags</a></li>
               <li class="breadcrumb-item active"><a href="{{route('home')}}">Dashboard</a></li>
             </ol>
           </div><!-- /.col -->
@@ -36,11 +36,11 @@
 
     <div class="row justify-content-end card-body">
         <transition name="slide-fade">
-            <form v-if="!showCategory" action="{{route('category.store')}}" method="POST" class="col-8">
+            <form v-if="!showTag" action="{{route('tag.store')}}" method="POST" class="col-8">
                 @csrf
                 <div class="row justify-content-center">
                 <div class="col-md-10 col-sm-12 d-flex">
-                    <input type="text" class="form-control" name="name" placeholder="Category Name ...">
+                    <input type="text" class="form-control" name="name" placeholder="Tag Name ...">
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -51,7 +51,7 @@
                 </div>
             </form>
         </transition>
-        <button class="btn col-2" :class="{'btn-success':showCategory,'btn-danger':!showCategory}" @click.prevent="showSubmitCategory"  v-text="categoryText"></button>
+        <button class="btn col-2" :class="{'btn-success':showTag,'btn-danger':!showTag}" @click.prevent="showSubmitTag"  v-text="tagText"></button>
 
 
     </div>
@@ -60,28 +60,28 @@
 
 
     <ul class="list-group">
-        @foreach ($categories as $category)
+        @foreach ($tags as $tag)
 
-            <li class="list-group-item bg-indigo mb-1 d-flex  align-items-center">
-                <span class="float-left badge badge-info text-white badge-pill">{{$category->id}}</span>
-                <span class="ml-3 float-left">{{$category->name}}</span>
+            <li class="list-group-item bg-steelblue text-white  mb-1 d-flex  align-items-center">
+                <span class="float-left badge badge-info text-white badge-pill">{{$tag->id}}</span>
+                <span class="ml-3 float-left">{{$tag->name}}</span>
 
-                <form action="{{route('category.update',$category->id)}}" method="post" class=" ml-auto d-none updateCategory" class="ml-auto bg-danger">
+                <form action="{{route('tag.update',$tag->id)}}" method="post" class=" ml-auto d-none updateTag" class="ml-auto bg-danger">
                     @csrf
                     @method('PUT')
                     <div class="d-flex">
-                        <input type="text" name="name" value="{{$category->name}}" class="form-control" >
+                        <input type="text" name="name" value="{{$tag->name}}" class="form-control" >
                         <button type="submit" class="btn btn-info text-light btn-sm">
                             upate
                         </button>
                     </div>
                 </form>
 
-                <button type="submit" class="btn ml-auto text-light" @click.prevent="showUpdateCategory($event)">
+                <button type="submit" class="btn ml-auto text-light" @click.prevent="showUpdateTag($event)">
                     <i class="far fa-edit pointer" title="edit"></i>
                 </button>
 
-                <form action="{{route('category.destroy',$category->id)}}"  method="post">
+                <form action="{{route('tag.destroy',$tag->id)}}"  method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn text-light">
@@ -101,7 +101,7 @@
       <hr>
       <div class="row justify-content-center mt-1">
           <div class="col-4 m-auto justify-content-center">
-              <p class="text-center m-auto"> {{ $categories->onEachSide(1)->links() }}</p>
+              <p class="text-center m-auto"> {{ $tags->onEachSide(1)->links() }}</p>
           </div>
       </div>
     </div>
