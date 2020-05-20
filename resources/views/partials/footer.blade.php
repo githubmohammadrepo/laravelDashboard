@@ -1,7 +1,7 @@
 <div id="footerContainer">
 
   <!-- /.content-wrapper -->
-  <footer class="main-footer" id="footer">
+  <footer class="main-footer m-0" id="footer">
     <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">

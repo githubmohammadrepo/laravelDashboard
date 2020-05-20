@@ -49708,7 +49708,9 @@ var app = new Vue({
     showCategory: true,
     categoryText: 'new',
     showTag: true,
-    tagText: 'new'
+    tagText: 'new',
+    showAuthorText: 'new',
+    showAuthorStatus: false
   },
   methods: {
     toggleUpdateFormUser: function toggleUpdateFormUser() {
@@ -49781,6 +49783,15 @@ var app = new Vue({
         }
       } // console.log(e.target.offsetParent.children[2].classList.remove('d-none'));
 
+    },
+    showFormNewAuthor: function showFormNewAuthor() {
+      this.showAuthorStatus = !this.showAuthorStatus;
+
+      if (this.showAuthorStatus) {
+        this.showAuthorText = 'close';
+      } else {
+        this.showAuthorText = 'new';
+      }
     }
   }
 });

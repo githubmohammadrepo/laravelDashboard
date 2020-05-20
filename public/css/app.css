@@ -24,6 +24,14 @@
   background-color: steelblue !important;
 }
 
+.bg-trashed {
+  background: #df3668 !important;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #d02626, #d8712c);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -11018,5 +11026,9 @@ body#container {
 
 .pointer {
   cursor: pointer;
+}
+
+.radius-50 {
+  border-radius: 50%;
 }
 

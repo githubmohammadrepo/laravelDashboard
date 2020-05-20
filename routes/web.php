@@ -27,7 +27,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UserController');
     Route::resource('category', 'CategoryController');
     Route::resource('tag', 'TagController');
+    Route::get('trashed', 'BookController@trashed')->name('book.trashed');
+    Route::get('newBook', 'BookController@newBook')->name('book.newBook');
     Route::resource('book', 'BookController');
+    Route::resource('author', 'AuthorController');
 
     Route::resource('dashboard', 'DashboardController');
     Route::get('dashboardExit', 'DashboardController@exit')->name('dashboard.exit');

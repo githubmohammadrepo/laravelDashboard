@@ -44,7 +44,7 @@
                     <div class="card m-auto " style="width: 18rem;">
                         <div class="card-body row">
                             <div class="col-4">
-                                <img class="img-circle float-right" width="60px" height="60px" src="{{asset('uploaded/'.(Auth::user()->image !=null ? Auth::user()->image : 'default-avatar.png'))}}" alt="...">
+                                <img class="img-circle float-right" width="60px" height="60px" src="{{asset('uploaded/'.($user->image !=null ? $user->image : 'default-avatar.png'))}}" alt="...">
                                 <h5 class="text-center" title="{{$user->name}}">&nbsp;{{substr($user->name,0,6)}}</h5>
                             </div>
                             <div class="col">

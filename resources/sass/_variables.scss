@@ -41,3 +41,10 @@ $cyan: #6cb2eb;
 .bg-steelblue {
     background-color: steelblue !important;
 }
+
+.bg-trashed{
+    background: rgb(223, 54, 104) !important;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, rgb(230, 42, 236), rgb(113, 26, 128));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, rgb(208, 38, 38), rgb(216, 113, 44)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}

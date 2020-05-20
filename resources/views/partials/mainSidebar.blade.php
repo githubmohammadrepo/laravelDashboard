@@ -45,11 +45,48 @@
           </li>
 
           <li class="nav-item">
+            <a href="{{route('author.index')}}" class="nav-link bg-cornflowerblue text-white">
+                <i class="nav-icon fas fa-users"></i>
+                <p>Authors</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="{{route('tag.index')}}" class="nav-link bg-purple">
                 <i class="nav-icon fas fa-list-alt"></i>
                 <p>Tag</p>
             </a>
 
+          </li>
+
+          <li class="nav-item has-treeview bg-cornflowerblue">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>              <p>
+                Books
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview bg-navy">
+              <li class="nav-item bg-cyan">
+                <a href="{{route('book.newBook')}}" class="nav-link">
+                    <i class="nav-icon fa fa-plus" aria-hidden="true"></i>
+                    <p>New</p>
+                </a>
+              </li>
+              <li class="nav-item bg-blue">
+                <a href="{{route('book.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-book-open"></i>
+                    <p>All Books</p>
+                </a>
+              </li>
+              <li class="nav-item bg-trashed">
+                <a href="{{route('book.trashed')}}" class="nav-link">
+                    <i class="nav-icon fas fa-trash-alt"></i>
+                    <p>Trshed</p>
+                </a>
+              </li>
+
+            </ul>
           </li>
 
           <li class="nav-item">
