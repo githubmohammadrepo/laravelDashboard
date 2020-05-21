@@ -49681,6 +49681,8 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -49710,7 +49712,9 @@ var app = new Vue({
     showTag: true,
     tagText: 'new',
     showAuthorText: 'new',
-    showAuthorStatus: false
+    showAuthorStatus: false,
+    authorUpdateData: [],
+    authorAction: 'http://localhost:8000/author'
   },
   methods: {
     toggleUpdateFormUser: function toggleUpdateFormUser() {
@@ -49789,9 +49793,24 @@ var app = new Vue({
 
       if (this.showAuthorStatus) {
         this.showAuthorText = 'close';
+        this.authorUpdateData = [];
+        this.authorAction = 'http://localhost:8000/author';
       } else {
         this.showAuthorText = 'new';
       }
+    },
+    showUpdateAuthor: function showUpdateAuthor(id) {
+      var _this = this;
+
+      console.log(id);
+      axios.get('http://localhost:8000/author/' + id + '/edit').then(function (res) {
+        _this.showFormNewAuthor();
+
+        _this.authorUpdateData = res.data;
+        _this.authorAction += '/' + _this.authorUpdateData.id;
+      })["catch"](function (err) {
+        console.log(err);
+      });
     }
   }
 });

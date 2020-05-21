@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+ var axios = require('axios');
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -37,6 +39,8 @@ const app = new Vue({
         tagText: 'new',
         showAuthorText:'new',
         showAuthorStatus:false,
+        authorUpdateData:[],
+        authorAction:'http://localhost:8000/author',
     },
     methods: {
         toggleUpdateFormUser() {
@@ -118,9 +122,23 @@ const app = new Vue({
             this.showAuthorStatus = !this.showAuthorStatus;
             if(this.showAuthorStatus){
                 this.showAuthorText ='close'
+                this.authorUpdateData = [];
+                this.authorAction='http://localhost:8000/author';
+
             }else{
                 this.showAuthorText ='new'
             }
+        },
+        showUpdateAuthor(id){
+            console.log(id)
+            axios.get('http://localhost:8000/author/'+id+'/edit')
+            .then(res => {
+                this.showFormNewAuthor();
+                this.authorUpdateData =res.data;
+                this.authorAction +='/'+this.authorUpdateData.id;
+            }).catch(err => {
+            console.log(err)
+        })
         }
     },
 })

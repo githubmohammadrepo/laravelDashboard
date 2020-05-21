@@ -16,7 +16,7 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = Author::all();
+        $authors = Author::orderBy('id','desc')->paginate(10);
         return view('author.author',compact('authors'));
     }
 
@@ -42,18 +42,18 @@ class AuthorController extends Controller
             'fullName' => 'required|string|max:60',
             'about'=> 'nullable|string|max:255',
             'city' => 'nullable|string|max:30',
-            'phone' => 'nullable|numeric|digits_between:1,15',
+            'phone' => 'nullable|string',
             'email' => 'nullable|string|email|max:50',
             'website' => 'nullable|string|url|max:60',
             'publisher' => 'nullable|string|max:50',
             'age' => 'nullable|integer|digits_between:1,3',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
            //uplaod new image
         $imageName=null;
         if($request->file('image')){
-            $imageName = time().'.'.$request->image->extension();
+           $imageName = time().'.'.$validatedData['image']->extension();
             $request->image->move(public_path('authors'), $imageName);
         }
 
@@ -68,11 +68,10 @@ class AuthorController extends Controller
         $author->website = $validatedData['website'];
         $author->publisher = $validatedData['publisher'];
         $author->age = $validatedData['age'];
-        $author->image = $validatedData['image'];
-        $author->save();
+        $author->image = $imageName;
+        $result =$author->save();
 
-        return back()
-            ->with('success','You have successfully upload image.');
+        $this->redirect_session($result,'Author','created');
     }
 
     /**
@@ -94,7 +93,7 @@ class AuthorController extends Controller
      */
     public function edit(Author $author)
     {
-        //
+        return $author;
     }
 
     /**
@@ -106,7 +105,56 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        //
+        $validatedData = $request->validate([
+            'fullName' => 'required|string|max:60',
+            'about'=> 'nullable|string|max:255',
+            'city' => 'nullable|string|max:30',
+            'phone' => 'nullable|string',
+            'email' => 'nullable|string|email|max:50',
+            'website' => 'nullable|string|url|max:60',
+            'publisher' => 'nullable|string|max:50',
+            'age' => 'nullable|integer|digits_between:1,3',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+           //uplaod new image
+        $imageName=null;
+        if($request->file('image')){
+            //remvoe old image
+            //remove old image
+        if(\File::exists(public_path('authors/'.$author->image))){
+
+            //od image removed
+            \File::delete(public_path('authors/'.$author->image));
+
+          }else{
+
+            // File does not exists.
+
+          }
+           $imageName = time().'.'.$validatedData['image']->extension();
+            $request->image->move(public_path('authors'), $imageName);
+        }
+
+
+        //update information current authenticated user in database
+        $author->fullName = $validatedData['fullName'];
+        $author->about = $validatedData['about'];
+        $author->city = $validatedData['city'];
+        $author->phone = $validatedData['phone'];
+        $author->email = $validatedData['email'];
+        $author->website = $validatedData['website'];
+        $author->publisher = $validatedData['publisher'];
+        $author->age = $validatedData['age'];
+        $author->image = $imageName;
+        $result =$author->save();
+
+        if($result){
+            return back()->with('success','your author successfully created');
+        }else{
+          return back()->with('error','your author does not created');
+
+        }
     }
 
     /**
@@ -117,6 +165,23 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        // delete file
+        if(\File::exists(public_path('authors/'.$author->image))){
+
+            //od image removed
+            \File::delete(public_path('authors/'.$author->image));
+
+          }else{
+
+            // File does not exists.
+
+          }
+          if($author->delete()){
+              return back()->with('success','your author successfully updated');
+          }else{
+            return back()->with('error','your author does not updated');
+
+          }
+
     }
 }

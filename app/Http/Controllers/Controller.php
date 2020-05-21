@@ -10,4 +10,14 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    //general method for all controller
+    public function redirect_session($status,$title,$type){
+        if($status==true){
+            session('success','your '.$title.' successfully '.$type.'');
+        }else{
+            session('error','your '.$title.' does not '.$type.'');
+
+        }
+    }
 }

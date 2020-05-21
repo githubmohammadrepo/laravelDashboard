@@ -18,7 +18,7 @@ class CreateAuthorsTable extends Migration
             $table->string('fullName',60);
             $table->string('about',255)->nullable();
             $table->string('city',30)->nullable();
-            $table->string('phone',15)->nullable();
+            $table->string('phone',25)->nullable();
             $table->string('email',50)->nullable();
             $table->string('website',60)->nullable();
             $table->string('publisher',50)->nullable();
